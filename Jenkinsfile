@@ -1,27 +1,28 @@
 pipeline {
     agent any
 
-     triggers {
-        githubPush() 
+    triggers {
+        githubPush()
     }
 
     stages {
         stage('Print message') {
             steps {
-                echo "Clonando repositorio..." 
+                echo "Clonando repositorio..."
             }
         }
 
-        stage('Checkout'){
-
-            git branch: 'main', url: 'https://github.com/usuario/repositorio-publico.git'
-
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/fernandogc10/FSNow.git'
+            }
         }
 
-        stage('ls'){
-            echo "Viendo archivos..."
-            sh 'ls -la'
+        stage('ls') {
+            steps {
+                echo "Viendo archivos..."
+                sh 'ls -la'
+            }
         }
-        
     }
 }
